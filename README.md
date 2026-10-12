@@ -6,11 +6,34 @@
 
 ---
 
+## 📸 Project Interface Preview
+
+<div align="center">
+  <img src="assets/preview_chat.png" alt="Aura AI Wellness Companion" width="850"/>
+  <p><em>Aura: Private Empathetic Wellness Chat with Speech Dictation & Audio Read-Out</em></p>
+</div>
+
+<br/>
+
+<div align="center">
+  <img src="assets/preview_screener.png" alt="Standardized Clinical Screening" width="850"/>
+  <p><em>Standardized Clinical Triage: Validated PHQ-9 (Depression) & GAD-7 (Anxiety) Screeners</em></p>
+</div>
+
+<br/>
+
+<div align="center">
+  <img src="assets/preview_calm.png" alt="Neuro-Somatic Calm Zone" width="850"/>
+  <p><em>Calm Zone: Parasympathetic 4-7-8 Breathing, 5-4-3-2-1 Sensory Grounding & Synthesized Soundscapes</em></p>
+</div>
+
+---
+
 ## 🌟 Overview
 
 **MindPulse AI** is a confidential, zero-stigma mental wellness web platform engineered to bridge the critical gap between silent youth distress and professional healthcare. 
 
-It provides young individuals with an empathetic conversational companion (**Aura**), globally validated clinical psychometric screening instruments (**PHQ-9** and **GAD-7**), real-time neuro-somatic calming tools, and instant 24/7 crisis safety routing — with **100% on-device client privacy**.
+It equips young individuals with an empathetic conversational companion (**Aura**), globally validated clinical psychometric screening instruments (**PHQ-9** and **GAD-7**), real-time neuro-somatic calming tools, and instant 24/7 crisis safety routing — with **100% on-device client privacy**.
 
 ---
 
@@ -38,17 +61,19 @@ It provides young individuals with an empathetic conversational companion (**Aur
 ## 📁 Repository Structure
 
 ```text
+├── assets/                        # Project UI Screenshots & Visual Assets
+│   ├── preview_chat.png           # Aura Chat Interface Screenshot
+│   ├── preview_screener.png       # Clinical Screening Interface Screenshot
+│   └── preview_calm.png           # Calm Zone & Soundscapes Screenshot
 ├── index.html                     # Main Web Application UI
 ├── styles.css                     # Design System (Glassmorphism & Responsive Layout)
 ├── app.js                         # Core Logic, Audio Synthesizer & Screening Engine
-├── lean_canvas.html               # Printable 9-Box Lean Canvas (Ash Maurya Model)
-├── concept_note.html              # Formal Academic Project Concept Note
-├── presentation.html              # Interactive 10-Slide Presentation Deck
-├── LEAN_CANVAS.md                 # Detailed Lean Canvas Documentation
+├── lean_canvas.html               # Interactive 9-Box Lean Canvas (Ash Maurya Model)
+├── concept_note.html              # Formal Academic Project Concept Note Document
+├── presentation.html              # Interactive 10-Slide Web Presentation Deck
+├── LEAN_CANVAS.md                 # Detailed Lean Canvas Markdown Documentation
 ├── CONCEPT_NOTE.md                # Comprehensive Concept Note Markdown
 ├── PRESENTATION.md                # Slide-by-slide Presentation Script
-├── Lean_Canvas_MindPulse_AI.pdf   # 1-Page Vector PDF Lean Canvas
-├── MindPulse_AI_Presentation.pptx # Official 16:9 Widescreen PowerPoint Presentation
 └── README.md                      # Project Documentation
 ```
 
@@ -78,3 +103,10 @@ python -m http.server 8000
 3. **Medical Disclaimer:** MindPulse AI serves as an educational self-management aid and first-line triage companion, not as a replacement for certified clinical intervention.
 
 ---
+
+## 📜 Submission Details
+
+* **Program:** IBM SkillsBuild Masterclass 5: Creating Real Life Projects
+* **Thematic Track:** UN SDG 3 (Target 3.4 — Mental Health & Well-being)
+* **Author / Team:** Deep-tech-1314
+* **License:** MIT License
