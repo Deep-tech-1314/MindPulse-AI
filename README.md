@@ -68,9 +68,6 @@ It equips young individuals with an empathetic conversational companion (**Aura*
 ├── index.html                     # Main Web Application UI
 ├── styles.css                     # Design System (Glassmorphism & Responsive Layout)
 ├── app.js                         # Core Logic, Audio Synthesizer & Screening Engine
-├── lean_canvas.html               # Interactive 9-Box Lean Canvas (Ash Maurya Model)
-├── concept_note.html              # Formal Academic Project Concept Note Document
-├── presentation.html              # Interactive 10-Slide Web Presentation Deck
 ├── LEAN_CANVAS.md                 # Detailed Lean Canvas Markdown Documentation
 ├── CONCEPT_NOTE.md                # Comprehensive Concept Note Markdown
 ├── PRESENTATION.md                # Slide-by-slide Presentation Script
@@ -103,3 +100,10 @@ python -m http.server 8000
 3. **Medical Disclaimer:** MindPulse AI serves as an educational self-management aid and first-line triage companion, not as a replacement for certified clinical intervention.
 
 ---
+
+## 📜 Submission Details
+
+* **Program:** IBM SkillsBuild Masterclass 5: Creating Real Life Projects
+* **Thematic Track:** UN SDG 3 (Target 3.4 — Mental Health & Well-being)
+* **Author / Team:** Deep-tech-1314
+* **License:** MIT License
