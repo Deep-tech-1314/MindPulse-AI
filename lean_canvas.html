@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lean Canvas - MindPulse AI (SDG 3)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #4338ca;
+      --primary-dark: #312e81;
+      --dark: #0f172a;
+      --border-dark: #1e293b;
+      --bg-page: #f1f5f9;
+      --box-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --accent-teal: #0f766e;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+
+    body {
+      background-color: var(--bg-page);
+      color: var(--text);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Top Action Bar */
+    .toolbar {
+      width: 100%;
+      max-width: 1350px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      background: #ffffff;
+      padding: 14px 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      border: 1px solid #e2e8f0;
+    }
+
+    .toolbar-title h1 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .toolbar-title p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn {
+      background: var(--primary);
+      color: #ffffff;
+      padding: 9px 18px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.15s;
+    }
+
+    .btn:hover { background: var(--primary-dark); }
+    .btn-secondary { background: #e2e8f0; color: #1e293b; }
+    .btn-secondary:hover { background: #cbd5e1; }
+    .btn-pdf { background: #0f766e; }
+    .btn-pdf:hover { background: #115e59; }
+
+    /* Main Lean Canvas Container */
+    .canvas-container {
+      width: 100%;
+      max-width: 1350px;
+      background: #ffffff;
+      border: 2px solid var(--border-dark);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Canvas Header */
+    .canvas-header {
+      border-bottom: 2px solid var(--border-dark);
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f8fafc;
+    }
+
+    .canvas-title-group h2 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.02em;
+    }
+
+    .canvas-title-group p {
+      font-size: 0.88rem;
+      color: var(--primary);
+      font-weight: 700;
+      margin-top: 2px;
+    }
+
+    .canvas-meta-group {
+      text-align: right;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    /* 5-Column Grid */
+    .canvas-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      border-bottom: 2px solid var(--border-dark);
+    }
+
+    .box {
+      border-right: 2px solid var(--border-dark);
+      padding: 14px 14px 18px;
+      display: flex;
+      flex-direction: column;
+      background: #ffffff;
+    }
+
+    .box:last-child {
+      border-right: none;
+    }
+
+    .box-title {
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #0f172a;
+      margin-bottom: 2px;
+    }
+
+    .box-subtitle {
+      font-size: 0.7rem;
+      color: #64748b;
+      margin-bottom: 12px;
+      font-style: italic;
+      line-height: 1.25;
+    }
+
+    .box-content {
+      font-size: 0.82rem;
+      line-height: 1.5;
+      color: #1e293b;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .box-content ul {
+      padding-left: 14px;
+      list-style-type: disc;
+    }
+
+    .box-content li {
+      margin-bottom: 6px;
+    }
+
+    .sub-section {
+      border-top: 1px dashed #cbd5e1;
+      padding-top: 10px;
+      margin-top: auto;
+    }
+
+    /* Split Column (Row 1 & Row 2 items) */
+    .split-col {
+      display: flex;
+      flex-direction: column;
+      border-right: 2px solid var(--border-dark);
+    }
+
+    .split-box {
+      padding: 14px 14px 18px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .split-box:first-child {
+      border-bottom: 2px solid var(--border-dark);
+    }
+
+    /* Bottom Grid: Cost Structure & Revenue Streams */
+    .canvas-bottom {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .bottom-box {
+      padding: 16px 20px 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .bottom-box:first-child {
+      border-right: 2px solid var(--border-dark);
+    }
+
+    .uvp-highlight {
+      background: #eef2ff;
+      border-left: 4px solid var(--primary);
+      padding: 10px 12px;
+      border-radius: 4px;
+      color: #312e81;
+      font-weight: 600;
+      font-size: 0.82rem;
+      line-height: 1.45;
+    }
+
+    .footer-watermark {
+      padding: 10px 24px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      background: #f8fafc;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    @media print {
+      body { background: none; padding: 0; }
+      .toolbar { display: none; }
+      .canvas-container { border: 2px solid #000; box-shadow: none; width: 100%; max-width: 100%; }
+      @page { size: landscape; margin: 6mm; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Action Toolbar -->
+  <div class="toolbar">
+    <div class="toolbar-title">
+      <h1>MindPulse AI — Lean Canvas (Official 9-Box Matrix)</h1>
+      <p>IBM SkillsBuild Masterclass 5 • Aligned with UN SDG 3: Good Health and Well-being</p>
+    </div>
+    <div class="btn-group">
+      <a href="index.html" class="btn btn-secondary">← Back to App</a>
+      <a href="concept_note.html" class="btn btn-secondary">Concept Note</a>
+      <a href="Lean_Canvas_MindPulse_AI.pdf" download="Lean_Canvas_MindPulse_AI.pdf" class="btn btn-pdf">📥 Download Lean Canvas PDF</a>
+      <a href="MindPulse_AI_Presentation.pptx" download="MindPulse_AI_Presentation.pptx" class="btn">📊 Download PPTX</a>
+      <button onclick="window.print()" class="btn btn-secondary">🖨️ Print View</button>
+    </div>
+  </div>
+
+  <!-- Lean Canvas Printable Grid -->
+  <div class="canvas-container">
+    <header class="canvas-header">
+      <div class="canvas-title-group">
+        <h2>LEAN CANVAS: MindPulse AI</h2>
+        <p>AI-Powered Youth Mental Health Screening & First-line Supportive Companion</p>
+      </div>
+      <div class="canvas-meta-group">
+        <div><strong>Aligned With:</strong> UN SDG 3 (Target 3.4 — Mental Health & Well-being)</div>
+        <div><strong>Target:</strong> High School & University Students, Youth in Tier-2/3 Cities</div>
+        <div><strong>Status:</strong> Functional Prototype Built & Verified • Version 1.0</div>
+      </div>
+    </header>
+
+    <div class="canvas-grid">
+      <!-- 1. PROBLEM -->
+      <div class="box">
+        <div class="box-title">1. Problem</div>
+        <div class="box-subtitle">Top 1-3 core problems faced by audience</div>
+        <div class="box-content">
+          <ul>
+            <li><strong>Acute Stigma & Fear:</strong> Over 75% of distressed youths avoid traditional on-campus counseling due to judgment, shame, and confidentiality fears.</li>
+            <li><strong>Severe Provider Deficit:</strong> Less than 1 clinical psychologist per 100,000 citizens in semi-urban areas; private therapy costs (₹1,500–₹4,000/hr) are inaccessible.</li>
+            <li><strong>Delayed Intervention:</strong> Students dismiss chronic anxiety as "just exam fatigue" until symptoms escalate into acute psychological breakdowns.</li>
+          </ul>
+
+          <div class="sub-section">
+            <div class="box-title" style="font-size:0.7rem;">Existing Alternatives</div>
+            <p style="font-size:0.76rem; color:#475569; margin-top:3px;">
+              Unregulated social forums (Reddit/Discord), expensive meditation apps (Calm/Headspace - $70/yr paywalls), and crisis hotlines called only after emergencies occur.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 & 8. SOLUTION & KEY METRICS (Split Column 2) -->
+      <div class="split-col">
+        <div class="split-box">
+          <div class="box-title">4. Solution</div>
+          <div class="box-subtitle">Top 3 core features addressing problems</div>
+          <div class="box-content">
+            <ul>
+              <li><strong>Zero-Stigma AI Companion ("Aura"):</strong> 24/7 empathetic conversational agent providing active listening, emotional validation, and CBT reframing.</li>
+              <li><strong>Clinical Screeners:</strong> Standardized self-assessments (PHQ-9 & GAD-7) with instant risk stratification and actionable guidance.</li>
+              <li><strong>Neuro-Somatic Zone:</strong> Guided 4-7-8 and Box breathing visualizer paired with 5-4-3-2-1 sensory grounding.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="split-box">
+          <div class="box-title">8. Key Metrics</div>
+          <div class="box-subtitle">Key metrics indicating health and traction</div>
+          <div class="box-content">
+            <ul>
+              <li><strong>Engagement:</strong> Daily Active Users (DAU) and 14-day retention rate.</li>
+              <li><strong>Screening Volume:</strong> Number of completed PHQ-9 and GAD-7 assessments.</li>
+              <li><strong>Somatic Relief:</strong> Self-reported anxiety drop pre/post guided breathing cycles.</li>
+              <li><strong>Safety Escalation:</strong> High-risk cases connected to national emergency helplines.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. UNIQUE VALUE PROPOSITION -->
+      <div class="box">
+        <div class="box-title">3. Unique Value Proposition</div>
+        <div class="box-subtitle">Single clear, compelling message that stands out</div>
+        <div class="box-content">
+          <div class="uvp-highlight">
+            "Instant, zero-cost, stigma-free mental health first-aid in your pocket — bridging the gap between silent personal struggle and professional care."
+          </div>
+
+          <div class="sub-section">
+            <div class="box-title" style="font-size:0.7rem;">High-Level Concept</div>
+            <p style="font-size:0.78rem; color:#1e293b; margin-top:2px;">
+              <em>"Duolingo meets Crisis Text Line for mental wellness and early diagnostic triage."</em>
+            </p>
+          </div>
+
+          <div class="sub-section">
+            <div class="box-title" style="font-size:0.7rem;">Privacy-First Guarantee</div>
+            <p style="font-size:0.76rem; color:#475569; margin-top:2px;">
+              Zero mandatory logins, zero cloud ad-tracking; 100% on-device client processing for psychological safety.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9 & 5. UNFAIR ADVANTAGE & CHANNELS (Split Column 4) -->
+      <div class="split-col">
+        <div class="split-box">
+          <div class="box-title">9. Unfair Advantage</div>
+          <div class="box-subtitle">Something that cannot easily be copied or bought</div>
+          <div class="box-content">
+            <ul>
+              <li><strong>Clinical Protocol Rigor:</strong> Seamless synthesis of validated clinical psychometric instruments (PHQ-9 & GAD-7) with immediate safety emergency protocols.</li>
+              <li><strong>Zero-Friction Offline Architecture:</strong> Fully operational inside standard browsers without paid LLM API dependency or app store barriers.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="split-box">
+          <div class="box-title">5. Channels</div>
+          <div class="box-subtitle">Paths to reach target users</div>
+          <div class="box-content">
+            <ul>
+              <li>University and college student wellness cells & student unions.</li>
+              <li>High-school counseling portals and academic stress seminars.</li>
+              <li>IBM SkillsBuild student ecosystem & youth NGO networks.</li>
+              <li>Social media mental health awareness drives (Instagram/WhatsApp).</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. CUSTOMER SEGMENTS -->
+      <div class="box">
+        <div class="box-title">2. Customer Segments</div>
+        <div class="box-subtitle">Target customer profiles and users</div>
+        <div class="box-content">
+          <ul>
+            <li><strong>Primary Users:</strong> Youth & students aged 15–25 navigating exam anxiety, loneliness, depressive thoughts, or social pressure.</li>
+            <li><strong>Secondary Users:</strong> Young job seekers and early-career corporate professionals in Tier-2/3 cities facing workplace burnout.</li>
+            <li><strong>Institutional Beneficiaries:</strong> Colleges and universities seeking scalable first-line wellness screening tools.</li>
+          </ul>
+
+          <div class="sub-section">
+            <div class="box-title" style="font-size:0.7rem;">Early Adopters</div>
+            <p style="font-size:0.76rem; color:#475569; margin-top:2px;">
+              Undergraduate STEM and competitive exam aspirants experiencing severe academic pressure who actively seek private digital support.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Row: 7. Cost Structure & 6. Revenue Streams -->
+    <div class="canvas-bottom">
+      <div class="bottom-box">
+        <div class="box-title">7. Cost Structure</div>
+        <div class="box-subtitle">Fixed and variable operational expenses</div>
+        <div class="box-content">
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div>
+              <strong style="font-size:0.78rem;">Fixed Costs:</strong>
+              <ul style="margin-top:4px;">
+                <li>Lightweight CDN web hosting & domain registration ($10–$25/year).</li>
+                <li>Clinical review board & ethics advisory honorariums.</li>
+              </ul>
+            </div>
+            <div>
+              <strong style="font-size:0.78rem;">Variable Costs:</strong>
+              <ul style="margin-top:4px;">
+                <li>Natural language processing compute scaling.</li>
+                <li>Campus outreach collateral & student ambassador programs.</li>
+                <li>Compliance and data protection audit certifications.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-box">
+        <div class="box-title">6. Revenue Streams</div>
+        <div class="box-subtitle">Financial sustainability and monetization models</div>
+        <div class="box-content">
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div>
+              <strong style="font-size:0.78rem;">B2B Institutional Licensing:</strong>
+              <ul style="margin-top:4px;">
+                <li>Annual campus SaaS subscription providing custom portals and anonymized student wellness index for college counseling cells.</li>
+                <li>Corporate employee wellness subscriptions for entry-level EAPs.</li>
+              </ul>
+            </div>
+            <div>
+              <strong style="font-size:0.78rem;">Grants & CSR Funding:</strong>
+              <ul style="margin-top:4px;">
+                <li>CSR health innovation grants (IBM SkillsBuild / public health foundations).</li>
+                <li>Affiliate referrals to accredited tele-therapy partner clinics.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer-watermark">
+      <span>MindPulse AI • IBM SkillsBuild Masterclass 5 Submission</span>
+      <span>Lean Canvas Template adapted from Ash Maurya & Lean Foundry</span>
+      <span>SDG 3: Good Health and Well-being</span>
+    </footer>
+  </div>
+
+</body>
+</html>
