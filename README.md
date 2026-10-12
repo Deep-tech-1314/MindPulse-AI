@@ -101,9 +101,3 @@ python -m http.server 8000
 
 ---
 
-## 📜 Submission Details
-
-* **Program:** IBM SkillsBuild Masterclass 5: Creating Real Life Projects
-* **Thematic Track:** UN SDG 3 (Target 3.4 — Mental Health & Well-being)
-* **Author / Team:** Deep-tech-1314
-* **License:** MIT License
