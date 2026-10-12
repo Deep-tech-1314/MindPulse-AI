@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MindPulse AI - Mental Wellness & Screening Companion</title>
+  <meta name="description" content="AI-powered mental health screening and supportive wellness companion aligning with UN SDG 3: Good Health and Well-being." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/>
+          </svg>
+        </div>
+        <div>
+          <h2>MindPulse AI</h2>
+          <span class="tag">SDG 3: Health & Well-being</span>
+        </div>
+      </div>
+
+      <nav class="nav-menu">
+        <button class="nav-item active" data-tab="chat-tab" id="nav-chat">
+          <span class="nav-icon">💬</span>
+          <span>AI Wellness Chat</span>
+        </button>
+        <button class="nav-item" data-tab="screen-tab" id="nav-screen">
+          <span class="nav-icon">📋</span>
+          <span>Clinical Screening (PHQ/GAD)</span>
+        </button>
+        <button class="nav-item" data-tab="calm-tab" id="nav-calm">
+          <span class="nav-icon">🌿</span>
+          <span>Calm Zone & Breathing</span>
+        </button>
+        <button class="nav-item" data-tab="tracker-tab" id="nav-tracker">
+          <span class="nav-icon">📊</span>
+          <span>Mood Tracker & Insights</span>
+        </button>
+        <button class="nav-item" data-tab="sos-tab" id="nav-sos">
+          <span class="nav-icon">🛡️</span>
+          <span>Emergency Support & SOS</span>
+        </button>
+      </nav>
+
+
+      <div class="disclaimer-badge">
+        <small>⚠️ <strong>Educational & First-line Aid</strong>: Not a replacement for emergency clinical intervention.</small>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- Top header bar -->
+      <header class="topbar">
+        <div class="topbar-status">
+          <span class="status-pulse"></span>
+          <span id="systemStatus">MindPulse AI Ready • Confidential & Client-Side Secure</span>
+        </div>
+        <div class="topbar-actions">
+          <button id="themeToggle" class="icon-btn" title="Toggle Theme">🌓</button>
+          <button id="quickSosBtn" class="sos-pill-btn">🚨 Crisis SOS Help</button>
+        </div>
+      </header>
+
+      <!-- TAB 1: AI Chatbot -->
+      <section id="chat-tab" class="tab-content active">
+        <div class="chat-container">
+          <div class="chat-header">
+            <div class="chat-bot-info">
+              <div class="avatar">🤖</div>
+              <div>
+                <h3>Aura - Your Empathetic Wellness Agent</h3>
+                <p>Supportive active listener, cognitive reframing & wellness guidance</p>
+              </div>
+            </div>
+            <div class="chat-actions">
+              <button class="pill-btn-outline" id="ttsToggleBtn" title="Toggle voice read-aloud">🔊 Voice Audio: On</button>
+              <button class="pill-btn-outline" id="clearChatBtn">Clear Conversation</button>
+            </div>
+          </div>
+
+          <div class="chat-quick-prompts">
+            <span>Quick Prompts:</span>
+            <button class="chip" data-prompt="I've been feeling overwhelmed with exams and expectations lately.">Overwhelmed with studies</button>
+            <button class="chip" data-prompt="I'm having a sudden wave of panic and my heart is racing.">Panic & Anxiety attack</button>
+            <button class="chip" data-prompt="I feel lonely and unmotivated to do anything today.">Feeling lonely & low</button>
+            <button class="chip" data-prompt="Can you guide me through a quick stress relief technique?">Quick relief technique</button>
+          </div>
+
+          <div class="chat-messages" id="chatMessages">
+            <!-- Messages inserted dynamically -->
+          </div>
+
+          <div class="chat-input-area">
+            <form id="chatForm">
+              <button type="button" id="voiceInputBtn" class="icon-btn voice-btn" title="Click to speak (Speech Recognition)">🎙️</button>
+              <input 
+                type="text" 
+                id="userInput" 
+                placeholder="Share how you're feeling today in confidence (or click 🎙️ to speak)..." 
+                autocomplete="off"
+                required 
+              />
+              <button type="submit" id="sendBtn" class="send-btn" aria-label="Send Message">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: Clinical Screening (PHQ-9 & GAD-7) -->
+      <section id="screen-tab" class="tab-content">
+        <div class="screener-wrapper">
+          <div class="panel-header">
+            <div>
+              <h2>Standardized Clinical Wellness Screening</h2>
+              <p>Self-assessment instruments validated globally for early detection of Anxiety & Depression.</p>
+            </div>
+            <div class="assessment-switcher">
+              <button class="sub-tab-btn active" id="btnPhq9" data-screener="phq9">PHQ-9 (Depression Screener)</button>
+              <button class="sub-tab-btn" id="btnGad7" data-screener="gad7">GAD-7 (Anxiety Screener)</button>
+            </div>
+          </div>
+
+          <div class="assessment-card" id="assessmentCard">
+            <div class="screener-meta">
+              <h3 id="screenerTitle">PHQ-9 (Patient Health Questionnaire-9)</h3>
+              <p id="screenerDesc">Over the <strong>last 2 weeks</strong>, how often have you been bothered by any of the following problems?</p>
+            </div>
+
+            <form id="screenerForm">
+              <div id="questionsContainer" class="questions-list">
+                <!-- Dynamically populated questions -->
+              </div>
+              <div class="screener-footer">
+                <button type="submit" class="primary-btn" id="submitAssessmentBtn">Calculate Assessment & Get Insights</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Result Modal / Card -->
+          <div id="assessmentResultCard" class="result-card hidden">
+            <div class="result-header">
+              <div class="result-score-badge" id="resultScore">0 / 27</div>
+              <div>
+                <h3 id="resultSeverity">Minimal</h3>
+                <p id="resultRecommendation">Insights and supportive recommendations based on evidence-based protocols.</p>
+              </div>
+            </div>
+            <div class="result-body" id="resultDetails"></div>
+            <div class="result-actions">
+              <button class="primary-btn" id="retakeAssessmentBtn">Retake Assessment</button>
+              <button class="pill-btn-outline" id="printReportBtn">Download / Print Results</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: Calm Zone & Breathing Visualizer -->
+      <section id="calm-tab" class="tab-content">
+        <div class="calm-wrapper">
+          <div class="panel-header">
+            <div>
+              <h2>Neuro-Somatic Calm Zone</h2>
+              <p>Scientifically validated paced respiration & sensory grounding tools to downregulate sympathetic fight-or-flight arousal.</p>
+            </div>
+          </div>
+
+          <div class="calm-grid">
+            <!-- Breathing Visualizer Card -->
+            <div class="tool-card breathing-card">
+              <div class="card-head">
+                <h3>4-7-8 Parasympathetic Breathing</h3>
+                <span class="badge">Vagus Nerve Calming</span>
+              </div>
+              <p class="tool-desc">Inhale for 4s, hold for 7s, and exhale slowly for 8s to rapidly reduce heart rate and stress hormones.</p>
+
+              <div class="breathing-circle-container">
+                <div class="breathing-circle" id="breathCircle">
+                  <div class="breath-text" id="breathStateText">Ready</div>
+                  <div class="breath-sub" id="breathCountText">Click Start</div>
+                </div>
+              </div>
+
+              <div class="breathing-controls">
+                <button class="primary-btn" id="breathToggleBtn">Start Breathing Cycle</button>
+                <button class="pill-btn-outline" id="switchBreathingPattern">Pattern: 4-7-8 Relax</button>
+              </div>
+            </div>
+
+            <!-- Grounding 5-4-3-2-1 Card -->
+            <div class="tool-card grounding-card">
+              <div class="card-head">
+                <h3>5-4-3-2-1 Sensory Grounding</h3>
+                <span class="badge">Panic Buster</span>
+              </div>
+              <p class="tool-desc">Anchor your mind to the present moment during sensory panic or intense racing thoughts.</p>
+
+              <div class="grounding-steps" id="groundingSteps">
+                <div class="ground-step active" data-step="1">
+                  <span class="step-num">5</span>
+                  <div>
+                    <strong>Look Around:</strong> Name 5 things you can see right now.
+                    <input type="text" class="ground-input" placeholder="e.g., notebook, lamp, coffee mug..." />
+                  </div>
+                </div>
+                <div class="ground-step" data-step="2">
+                  <span class="step-num">4</span>
+                  <div>
+                    <strong>Feel & Touch:</strong> Name 4 things you can physically feel.
+                    <input type="text" class="ground-input" placeholder="e.g., feet on floor, desk texture..." />
+                  </div>
+                </div>
+                <div class="ground-step" data-step="3">
+                  <span class="step-num">3</span>
+                  <div>
+                    <strong>Listen:</strong> Name 3 distinct sounds you can hear.
+                    <input type="text" class="ground-input" placeholder="e.g., fan hum, distant cars, bird..." />
+                  </div>
+                </div>
+                <div class="ground-step" data-step="4">
+                  <span class="step-num">2</span>
+                  <div>
+                    <strong>Smell:</strong> Name 2 things you can smell around you.
+                    <input type="text" class="ground-input" placeholder="e.g., clean air, rain, tea..." />
+                  </div>
+                </div>
+                <div class="ground-step" data-step="5">
+                  <span class="step-num">1</span>
+                  <div>
+                    <strong>Affirmation:</strong> Name 1 thing you are grateful for or appreciate about yourself.
+                    <input type="text" class="ground-input" placeholder="e.g., I am resilient and taking care of myself." />
+                  </div>
+                </div>
+              </div>
+
+              <div class="grounding-controls">
+                <button class="primary-btn" id="completeGroundingBtn">Complete Grounding & Reset</button>
+              </div>
+            </div>
+
+            <!-- Ambient Soundscapes Therapy Card -->
+            <div class="tool-card soundscape-card" style="grid-column: span 2;">
+              <div class="card-head">
+                <h3>🌧️ Therapeutic Ambient Soundscapes</h3>
+                <span class="badge">Somatic Audio Calming</span>
+              </div>
+              <p class="tool-desc">Synthesized in real-time using acoustic frequencies to lower sympathetic nervous activity and mask background anxiety triggers.</p>
+
+              <div class="soundscape-controls">
+                <div class="sound-presets">
+                  <button type="button" class="sound-chip" data-sound="rain">🌧️ Gentle Rain</button>
+                  <button type="button" class="sound-chip" data-sound="ocean">🌊 Ocean Waves</button>
+                  <button type="button" class="sound-chip" data-sound="alpha">🎶 432Hz Alpha Frequency</button>
+                </div>
+                <div class="sound-vol-row">
+                  <label>Volume: <span id="soundVolLabel">50%</span></label>
+                  <input type="range" id="soundVolSlider" min="0" max="100" value="50" class="slider" />
+                  <button type="button" class="pill-btn-outline" id="stopSoundBtn">⏹️ Mute Sound</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 4: Mood Tracker & Trends -->
+      <section id="tracker-tab" class="tab-content">
+        <div class="tracker-wrapper">
+          <div class="panel-header">
+            <div>
+              <h2>Daily Emotional Check-in & Micro-Journal</h2>
+              <p>Build self-awareness, track longitudinal mood patterns, and reflect safely.</p>
+            </div>
+          </div>
+
+          <div class="tracker-layout">
+            <div class="card checkin-form-card">
+              <h3>Today's Check-in</h3>
+              <form id="moodForm">
+                <label class="form-label">How are you feeling right now?</label>
+                <div class="mood-selector" id="moodSelector">
+                  <button type="button" class="mood-opt" data-score="5" data-mood="Thriving">😄<span>Thriving</span></button>
+                  <button type="button" class="mood-opt active" data-score="4" data-mood="Good">🙂<span>Good</span></button>
+                  <button type="button" class="mood-opt" data-score="3" data-mood="Neutral">😐<span>Neutral</span></button>
+                  <button type="button" class="mood-opt" data-score="2" data-mood="Stressed">😟<span>Stressed</span></button>
+                  <button type="button" class="mood-opt" data-score="1" data-mood="Exhausted">😫<span>Exhausted</span></button>
+                </div>
+
+                <label class="form-label">Energy Level (1-10): <span id="energyVal">7</span>/10</label>
+                <input type="range" id="energyRange" min="1" max="10" value="7" class="slider" />
+
+                <label class="form-label">Key Triggers & Factors (Select all that apply):</label>
+                <div class="trigger-chips" id="triggerChips">
+                  <span class="trigger-tag" data-tag="Exam Pressure">📚 Exam Pressure</span>
+                  <span class="trigger-tag" data-tag="Imposter Syndrome">🧠 Imposter Syndrome</span>
+                  <span class="trigger-tag" data-tag="Sleep Deficit">😴 Sleep Deficit</span>
+                  <span class="trigger-tag" data-tag="Social Fatigue">👥 Social Fatigue</span>
+                  <span class="trigger-tag" data-tag="Career Anxiety">💼 Career Anxiety</span>
+                  <span class="trigger-tag" data-tag="Grateful">✨ Grateful</span>
+                  <span class="trigger-tag" data-tag="Physical Health">🏃 Physical Health</span>
+                </div>
+
+                <label class="form-label">What's occupying your thoughts today?</label>
+                <textarea id="journalNote" rows="3" placeholder="Write a short reflection or trigger note (stored 100% locally on your device)..."></textarea>
+
+                <button type="submit" class="primary-btn full-width">Log Today's Check-in</button>
+              </form>
+            </div>
+
+            <div class="card history-card">
+              <div class="history-head">
+                <div>
+                  <h3>Recent Check-ins & Stats</h3>
+                  <span id="streakBadge" class="badge">🔥 1 Day Streak</span>
+                </div>
+                <button type="button" class="pill-btn-outline" id="clearAllMoodsBtn" style="font-size:0.75rem; padding:0.3rem 0.65rem;" title="Clear all recorded check-ins">🗑️ Clear All</button>
+              </div>
+
+              <div class="heatmap-container">
+                <span class="section-sublabel">14-Day Wellness Resilience Heatmap:</span>
+                <div class="heatmap-grid" id="heatmapGrid">
+                  <!-- Generated dynamically -->
+                </div>
+              </div>
+
+              <div id="moodChartMini" class="mood-trend-bars">
+                <!-- Visual bars generated -->
+              </div>
+              <div class="history-list" id="moodHistoryList">
+                <p class="empty-state">No check-ins yet. Log your first check-in above!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 5: SOS & Emergency Resources -->
+      <section id="sos-tab" class="tab-content">
+        <div class="sos-wrapper">
+          <div class="sos-alert-banner">
+            <div class="sos-banner-icon">🚨</div>
+            <div>
+              <h3>You are Not Alone. Support is Available 24/7.</h3>
+              <p>If you or someone you know is in crisis, having thoughts of self-harm, or feeling desperate, please reach out to dedicated professionals immediately. These helplines are free, confidential, and compassionate.</p>
+            </div>
+          </div>
+
+          <div class="helplines-grid">
+            <div class="helpline-card">
+              <span class="region-badge">India (National)</span>
+              <h4>KIRAN Mental Health Helpline</h4>
+              <p class="hl-desc">24/7 toll-free helpline by the Ministry of Social Justice and Empowerment.</p>
+              <div class="phone-num">📞 1800-599-0019</div>
+              <a href="tel:18005990019" class="call-btn">Call Immediately</a>
+            </div>
+
+            <div class="helpline-card">
+              <span class="region-badge">India (Tele-MANAS)</span>
+              <h4>Tele-MANAS National Helpline</h4>
+              <p class="hl-desc">Comprehensive 24/7 mental health service by Government of India.</p>
+              <div class="phone-num">📞 14416 / 1800-891-4416</div>
+              <a href="tel:14416" class="call-btn">Call Immediately</a>
+            </div>
+
+            <div class="helpline-card">
+              <span class="region-badge">Youth & Suicide Prevention</span>
+              <h4>Vandrevala Foundation</h4>
+              <p class="hl-desc">Free 24/7 professional psychological counseling & crisis intervention.</p>
+              <div class="phone-num">📞 +91 9999 666 555</div>
+              <a href="tel:+919999666555" class="call-btn">Call Now</a>
+            </div>
+
+            <div class="helpline-card">
+              <span class="region-badge">Global / International</span>
+              <h4>Befrienders Worldwide & IASP</h4>
+              <p class="hl-desc">Confidential support in over 40 countries for anyone feeling suicidal or in distress.</p>
+              <div class="phone-num">🌐 befrienders.org</div>
+              <a href="https://www.befrienders.org" target="_blank" rel="noopener" class="call-btn">Visit Directory</a>
+            </div>
+          </div>
+
+          <div class="card crisis-guide-card">
+            <h3>Immediate Crisis Grounding Protocol</h3>
+            <ol class="crisis-steps">
+              <li><strong>Physical Safety:</strong> Move away from any dangerous objects and sit in a comfortable, supported chair with both feet flat on the floor.</li>
+              <li><strong>Contact Someone:</strong> Call one of the toll-free numbers above or text a trusted friend/family member: <em>"I'm feeling unsafe and need you to stay with me."</em></li>
+              <li><strong>Focus on Breath:</strong> Breathe in for 4 seconds, hold gently for 4 seconds, and exhale slowly for 6 seconds.</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+
+  <!-- Formal Clinical Assessment Summary Modal -->
+  <div id="clinicalReportModal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <h3>MIND-HEALTH CLINICAL ASSESSMENT REPORT</h3>
+          <small id="reportMetaStamp">Validated Screening Protocol • Anonymous ID: #MP-8291</small>
+        </div>
+        <button id="closeReportModalBtn" class="icon-btn">✕</button>
+      </div>
+      <div class="modal-body" id="clinicalReportContent">
+        <!-- Injected dynamically -->
+      </div>
+      <div class="modal-footer">
+        <button class="primary-btn" onclick="window.print()">🖨️ Print Clinical Summary</button>
+        <button class="pill-btn-outline" id="closeReportModalBtn2">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
