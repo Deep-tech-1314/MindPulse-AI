@@ -78,10 +78,3 @@ python -m http.server 8000
 3. **Medical Disclaimer:** MindPulse AI serves as an educational self-management aid and first-line triage companion, not as a replacement for certified clinical intervention.
 
 ---
-
-## 📜 Submission Details
-
-* **Program:** IBM SkillsBuild Masterclass 5: Creating Real Life Projects
-* **Thematic Track:** UN SDG 3 (Target 3.4 — Mental Health & Well-being)
-* **Author / Team:** Deep-tech-1314
-* **License:** MIT License
